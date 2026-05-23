@@ -106,7 +106,7 @@ impl fmt::Display for Colored {
                 if new_color == Color::Reset {
                     return f.write_str("39");
                 } else {
-                    f.write_str("38;")?;
+                    f.write_str("38:")?;
                     color = new_color;
                 }
             }
@@ -114,7 +114,7 @@ impl fmt::Display for Colored {
                 if new_color == Color::Reset {
                     return f.write_str("49");
                 } else {
-                    f.write_str("48;")?;
+                    f.write_str("48:")?;
                     color = new_color;
                 }
             }
@@ -122,31 +122,31 @@ impl fmt::Display for Colored {
                 if new_color == Color::Reset {
                     return f.write_str("59");
                 } else {
-                    f.write_str("58;")?;
+                    f.write_str("58:")?;
                     color = new_color;
                 }
             }
         }
 
         match color {
-            Color::Black => f.write_str("5;0"),
-            Color::DarkGrey => f.write_str("5;8"),
-            Color::Red => f.write_str("5;9"),
-            Color::DarkRed => f.write_str("5;1"),
-            Color::Green => f.write_str("5;10"),
-            Color::DarkGreen => f.write_str("5;2"),
-            Color::Yellow => f.write_str("5;11"),
-            Color::DarkYellow => f.write_str("5;3"),
-            Color::Blue => f.write_str("5;12"),
-            Color::DarkBlue => f.write_str("5;4"),
-            Color::Magenta => f.write_str("5;13"),
-            Color::DarkMagenta => f.write_str("5;5"),
-            Color::Cyan => f.write_str("5;14"),
-            Color::DarkCyan => f.write_str("5;6"),
-            Color::White => f.write_str("5;15"),
-            Color::Grey => f.write_str("5;7"),
-            Color::Rgb { r, g, b } => write!(f, "2;{r};{g};{b}"),
-            Color::AnsiValue(val) => write!(f, "5;{val}"),
+            Color::Black => f.write_str("5:0"),
+            Color::DarkGrey => f.write_str("5:8"),
+            Color::Red => f.write_str("5:9"),
+            Color::DarkRed => f.write_str("5:1"),
+            Color::Green => f.write_str("5:10"),
+            Color::DarkGreen => f.write_str("5:2"),
+            Color::Yellow => f.write_str("5:11"),
+            Color::DarkYellow => f.write_str("5:3"),
+            Color::Blue => f.write_str("5:12"),
+            Color::DarkBlue => f.write_str("5:4"),
+            Color::Magenta => f.write_str("5:13"),
+            Color::DarkMagenta => f.write_str("5:5"),
+            Color::Cyan => f.write_str("5:14"),
+            Color::DarkCyan => f.write_str("5:6"),
+            Color::White => f.write_str("5:15"),
+            Color::Grey => f.write_str("5:7"),
+            Color::Rgb { r, g, b } => write!(f, "2::{r}:{g}:{b}"),
+            Color::AnsiValue(val) => write!(f, "5:{val}"),
             _ => Ok(()),
         }
     }
